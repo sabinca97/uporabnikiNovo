@@ -1,4 +1,4 @@
-FROM openjdk:14.0.2-jre-slim
+FROM openjdk:11.0.2-jre-slim
 
 RUN mkdir /app
 
