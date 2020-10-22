@@ -14,12 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
    
-    - name: Get Time
-      id: time
-      uses: nanzm/get-time-action@v1.0
-      with:
-        timeZone: 1
-        format: 'YYYY-MM-DD-HH-mm-ss'
+    - name: Get current time
+      uses: gerred/actions/current-time@master
+      id: current-time
           
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
@@ -35,5 +32,5 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: prporso2021/image-catalog:${{ steps.time.outputs.time }}
+        tags: prporso2021/image-catalog:${{ steps.current-time.outputs.time }}
       
