@@ -3,7 +3,7 @@ COPY ./ /app
 WORKDIR /app
 RUN mvn clean package -U
 
-FROM openjdk:14.0.2-jre-slim
+FROM adoptopenjdk:14.0.2_12-jre-openj9-0.21.0-bionic
 RUN mkdir /app
 WORKDIR /app
 COPY --from=build ./app/api/target/image-catalog-api-1.0.0-SNAPSHOT.jar /app
