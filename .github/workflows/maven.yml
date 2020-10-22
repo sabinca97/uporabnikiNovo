@@ -34,6 +34,7 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
+        file: ./Dockerfile_with_maven_build
         push: true
         tags: prporso2021/image-catalog:${{ steps.time.outputs.time }}
       
