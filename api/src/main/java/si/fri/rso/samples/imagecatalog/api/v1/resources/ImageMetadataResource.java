@@ -34,6 +34,7 @@ public class ImageMetadataResource {
     @Context
     protected UriInfo uriInfo;
 
+    // opomba
     @GET
     public Response getImageMetadata() {
 
