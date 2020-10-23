@@ -65,7 +65,7 @@ public class ImageMetadataResource {
             imageMetadata = imageMetadataBean.createImageMetadata(imageMetadata);
         }
 
-        return Response.status(Response.Status.CONFLICT).entity(imageMetadata).build();
+        return Response.status(Response.Status.OK).entity(imageMetadata).build();
 
     }
 
