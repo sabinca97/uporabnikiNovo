@@ -22,8 +22,8 @@ import si.fri.rso.samples.imagecatalog.services.beans.ImageMetadataBean;
 
 @ApplicationScoped
 @Path("/images")
-@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class ImageMetadataResource {
 
     private Logger log = Logger.getLogger(ImageMetadataResource.class.getName());
