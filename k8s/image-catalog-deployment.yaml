@@ -13,15 +13,15 @@ spec:
         app: image-catalog
     spec:
       containers:
-      - image: sabinca97/dockerslika:latest
+      - image: sabinca97/dockerslikanova:latest
         name: image-catalog
         env:
         - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-          value: jdbc:postgresql://ec2-54-205-26-79.compute-1.amazonaws.com:5432/d5vrhl1v98h166
+          value: jdbc:postgresql://ec2-52-1-95-247.compute-1.amazonaws.com:5432/d8gnrm64ecchtp
         - name: KUMULUZEE_DATASOURCES0_USERNAME
-          value: aevqweujajrrzy
+          value: vdjkikowgtbsmb
         - name: KUMULUZEE_DATASOURCES0_PASSWORD
-          value: eb898bee813118fb9bb50ee48d6e96113b5277a190c6f51433ec87eb3998f0b0
+          value: 90c2a354319c666def2d0e862c1d558df0a4919d7d4fd4753e95642899343dbc
         ports:
         - containerPort: 8080
           name: server

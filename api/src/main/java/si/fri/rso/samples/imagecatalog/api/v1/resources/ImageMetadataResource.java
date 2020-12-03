@@ -14,10 +14,12 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 import si.fri.rso.samples.imagecatalog.lib.ImageMetadata;
+import si.fri.rso.samples.imagecatalog.lib.mejnik1;
 import si.fri.rso.samples.imagecatalog.services.beans.ImageMetadataBean;
 
 @ApplicationScoped
@@ -36,11 +38,38 @@ public class ImageMetadataResource {
 
     @GET
     public Response getImageMetadata() {
+        mejnik1 oddaja = new mejnik1();
+        oddaja.setClani("sm3082");
+        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkov");
+        oddaja.setMikrostoritve("http://40.76.156.27:8080/v1/images/mejnik1");
+        oddaja.setGithub("https://github.com/sabinca97/mojRepozitorij");
+        oddaja.setTravis("toSeMorm");
+        oddaja.setDockerhub("https://hub.docker.com/repository/docker/sabinca97/dockerslika");
 
-        List<ImageMetadata> imageMetadata = imageMetadataBean.getImageMetadataFilter(uriInfo);
+        List<mejnik1> mejnikObject = new ArrayList();
+        mejnikObject.add(oddaja);
 
-        return Response.status(Response.Status.OK).entity(imageMetadata).build();
+        return Response.status(Response.Status.OK).entity(mejnikObject).build();
     }
+
+    @GET
+    @Path("/mejnik1")
+    public Response getMejnik() {
+
+        mejnik1 oddaja = new mejnik1();
+        oddaja.setClani("sm3082");
+        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkov");
+        oddaja.setMikrostoritve("http://40.76.156.27:8080/v1/images/mejnik1");
+        oddaja.setGithub("https://github.com/sabinca97/mojRepozitorij");
+        oddaja.setTravis("toSeMorm");
+        oddaja.setDockerhub("https://hub.docker.com/repository/docker/sabinca97/dockerslika");
+
+        List<mejnik1> mejnikObject = new ArrayList();
+        mejnikObject.add(oddaja);
+
+        return Response.status(Response.Status.OK).entity(mejnikObject).build();
+    }
+
 
     @GET
     @Path("/{imageMetadataId}")
