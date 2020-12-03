@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: image-catalog-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: image-catalog
+  template:
+    metadata:
+      labels:
+        app: image-catalog
+    spec:
+      containers:
+      - image: sabinca97/dockerslika:latest
+        name: image-catalog
+        env:
+        - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+          value: jdbc:postgresql://ec2-54-205-26-79.compute-1.amazonaws.com:5432/d5vrhl1v98h166
+        - name: KUMULUZEE_DATASOURCES0_USERNAME
+          value: aevqweujajrrzy
+        - name: KUMULUZEE_DATASOURCES0_PASSWORD
+          value: eb898bee813118fb9bb50ee48d6e96113b5277a190c6f51433ec87eb3998f0b0
+        ports:
+        - containerPort: 8080
+          name: server
+          protocol: TCP
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: image-catalog
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: server
+  selector:
+    app: image-catalog
+
+
+#    kubectl create -f image-catalog-deployment.yaml
+#  kubectl get services
+#  kubectl get deployments

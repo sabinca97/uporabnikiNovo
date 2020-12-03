@@ -9,9 +9,9 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/bcaocfcj
-      connection-url: jdbc:postgresql://suleiman.db.elephantsql.com:5432/bcaocfcj
-      username: bcaocfcj
-      password: GAskeEKMGVQbC7VLcEwrAcdWDTd7NupC
+      connection-url: jdbc:postgresql://ec2-54-205-26-79.compute-1.amazonaws.com:5432/d5vrhl1v98h166
+      username: aevqweujajrrzy
+      password: eb898bee813118fb9bb50ee48d6e96113b5277a190c6f51433ec87eb3998f0b0
       listen_addresses: "*"
       pool:
         max-size: 5
