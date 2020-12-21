@@ -13,7 +13,7 @@ spec:
         app: image-catalog
     spec:
       containers:
-      - image: sabinca97/dockerslikanova:latest
+      - image: sabinca97/novaslika:2
         name: image-catalog
         env:
         - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL

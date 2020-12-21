@@ -40,7 +40,7 @@ public class ImageMetadataResource {
     public Response getImageMetadata() {
         mejnik1 oddaja = new mejnik1();
         oddaja.setClani("sm3082");
-        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkov");
+        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkovv");
         oddaja.setMikrostoritve("http://40.76.156.27:8080/v1/images/mejnik1");
         oddaja.setGithub("https://github.com/sabinca97/mojRepozitorij");
         oddaja.setTravis("toSeMorm");
