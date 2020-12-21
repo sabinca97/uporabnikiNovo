@@ -15,6 +15,7 @@ spec:
       containers:
       - image: sabinca97/novaslika:2
         name: image-catalog
+        imagePullPolicy: Always
         env:
         - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
           value: jdbc:postgresql://ec2-52-1-95-247.compute-1.amazonaws.com:5432/d8gnrm64ecchtp
