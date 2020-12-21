@@ -16,6 +16,6 @@ env:
 script:
 - mvn clean package -U
 - docker build -t sabinca97/novaslika:2 .
-after_success:
 - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 - push "$DOCKER_IMAGE"
+
