@@ -61,7 +61,7 @@ public class ImageMetadataResource {
         oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkov");
         oddaja.setMikrostoritve("http://40.76.156.27:8080/v1/images/mejnik1");
         oddaja.setGithub("https://github.com/sabinca97/mojRepozitorij");
-        oddaja.setTravis("aaaaaaaassaaaa");
+        oddaja.setTravis("khhhh");
         oddaja.setDockerhub("https://hub.docker.com/repository/docker/sabinca97/dockerslika");
 
         List<mejnik1> mejnikObject = new ArrayList();
