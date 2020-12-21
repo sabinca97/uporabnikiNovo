@@ -40,10 +40,10 @@ public class ImageMetadataResource {
     public Response getImageMetadata() {
         mejnik1 oddaja = new mejnik1();
         oddaja.setClani("sm3082");
-        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkovv");
+        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkovvvvv");
         oddaja.setMikrostoritve("http://40.76.156.27:8080/v1/images/mejnik1");
         oddaja.setGithub("https://github.com/sabinca97/mojRepozitorij");
-        oddaja.setTravis("toSeMorm");
+        oddaja.setTravis("https://www.travis-ci.com/github/sabinca97/mojRepozitorij");
         oddaja.setDockerhub("https://hub.docker.com/repository/docker/sabinca97/dockerslika");
 
         List<mejnik1> mejnikObject = new ArrayList();
