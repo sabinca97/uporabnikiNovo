@@ -15,5 +15,6 @@ kumuluzee:
       listen_addresses: "*"
       pool:
         max-size: 5
-
-
+rest-properties:
+  maintenance-mode: false
+  broken: false
