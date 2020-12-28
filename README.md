@@ -51,6 +51,8 @@ Status Travic CI-ja :https://travis-ci.com/github/sabinca97/mojRepozitorij
  
     
 ### Health Check
+- kličem get ```http://localhost:8080/health/live```
+- v classu DemoResource spreminjam broken true/false
 
 
 
