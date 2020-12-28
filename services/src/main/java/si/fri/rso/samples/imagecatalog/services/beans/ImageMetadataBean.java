@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
 
+import org.eclipse.microprofile.metrics.annotation.Metered;
+import org.eclipse.microprofile.metrics.annotation.Timed;
 import si.fri.rso.samples.imagecatalog.lib.ImageMetadata;
 import si.fri.rso.samples.imagecatalog.models.converters.ImageMetadataConverter;
 import si.fri.rso.samples.imagecatalog.models.entities.ImageMetadataEntity;
@@ -46,6 +48,7 @@ public class ImageMetadataBean {
                        .map(ImageMetadataConverter::toDto).collect(Collectors.toList());
     }
 
+    @Timed(name = "timer koliko casa rabi za pridobit slike")
     public ImageMetadata getImageMetadata(Integer id) {
 
         ImageMetadataEntity imageMetadataEntity = em.find(ImageMetadataEntity.class, id);

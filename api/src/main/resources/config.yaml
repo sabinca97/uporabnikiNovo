@@ -20,10 +20,17 @@ kumuluzee:
       data-source-health-check:
         type: liveness
         jndi-name: jdbc/vdjkikowgtbsmb
-  metrics:
-    web-instrumentation:
-    - name: images-endpoint
-      url-pattern: /v1/images/*
+    metrics:
+      web-instrumentation:
+      - name: metrics-endpoint
+        url-pattern: /metrics/*
+        status-codes: "200, 500"
+      - name: images-endpoint
+        url-pattern: /v1/images/*
+      servlet:
+        enabled: true
+        mapping: /my-metrics-servlet
+
 rest-properties:
   maintenance-mode: false
   broken: false
