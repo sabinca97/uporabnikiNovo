@@ -20,16 +20,24 @@ kumuluzee:
       data-source-health-check:
         type: liveness
         jndi-name: jdbc/vdjkikowgtbsmb
-    metrics:
-      web-instrumentation:
-      - name: metrics-endpoint
-        url-pattern: /metrics/*
-        status-codes: "200, 500"
-      - name: images-endpoint
-        url-pattern: /v1/images/*
-      servlet:
-        enabled: true
-        mapping: /my-metrics-servlet
+
+  metrics:
+    logstash:
+      enabled: false
+      address: 127.0.0.1
+      port: 5043
+      period-s: 15
+    logs:
+      enabled: false
+      period-s: 30
+      level: INFO
+    web-instrumentation:
+    - name: metricsEndpoint
+      url-pattern: /metrics/*
+    - name: customersEndpoint
+      url-pattern: /v1/images/*
+
+
 
 rest-properties:
   maintenance-mode: false
