@@ -36,8 +36,13 @@ kumuluzee:
       url-pattern: /metrics/*
     - name: customersEndpoint
       url-pattern: /v1/images/*
-
-
+  cors-filter:
+    annotations:
+      my-resource:
+        allow-origin: "*"
+        allow-generic-http-requests: true
+        allow-subdomains: true
+        supported-methods: "GET, POST, DELETE, HEAD, OPTIONS, PUT"
 
 rest-properties:
   maintenance-mode: false

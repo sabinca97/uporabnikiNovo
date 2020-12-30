@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.kumuluz.ee.cors.annotations.CrossOrigin;
 import si.fri.rso.samples.imagecatalog.lib.ImageMetadata;
 import si.fri.rso.samples.imagecatalog.lib.mejnik1;
 import si.fri.rso.samples.imagecatalog.services.beans.ImageMetadataBean;
@@ -26,6 +27,7 @@ import si.fri.rso.samples.imagecatalog.services.beans.ImageMetadataBean;
 @Path("/images")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@CrossOrigin(allowOrigin = "*")
 public class ImageMetadataResource {
 
     private Logger log = Logger.getLogger(ImageMetadataResource.class.getName());
@@ -45,16 +47,13 @@ public class ImageMetadataResource {
     }
 
     @GET
-    @Path("/mejnik1")
+    @Path("/uporabnik")
+    @CrossOrigin(allowOrigin="*")
     public Response getMejnik() {
 
         mejnik1 oddaja = new mejnik1();
-        oddaja.setClani("sm3082");
-        oddaja.setOpis_projekta("Projekt se bo sel o ocenjevanju kupljenih izdelkov");
-        oddaja.setMikrostoritve("http://40.76.156.27:8080/v1/images/mejnik1");
-        oddaja.setGithub("https://github.com/sabinca97/mojRepozitorij");
-        oddaja.setTravis("sss");
-        oddaja.setDockerhub("https://hub.docker.com/repository/docker/sabinca97/dockerslika");
+        oddaja.setId(43);
+        oddaja.setIme("Nekdo");
 
         List<mejnik1> mejnikObject = new ArrayList();
         mejnikObject.add(oddaja);
