@@ -15,6 +15,7 @@ public class ImageMetadataConverter {
         dto.setHeight(entity.getHeight());
         dto.setWidth(entity.getWidth());
         dto.setUri(entity.getUri());
+        dto.setUser_id(entity.getUser_id());
 
         return dto;
 
@@ -29,6 +30,7 @@ public class ImageMetadataConverter {
         entity.setHeight(dto.getHeight());
         entity.setWidth(dto.getWidth());
         entity.setUri(dto.getUri());
+        entity.setUser_id(dto.getUser_id());
 
         return entity;
 

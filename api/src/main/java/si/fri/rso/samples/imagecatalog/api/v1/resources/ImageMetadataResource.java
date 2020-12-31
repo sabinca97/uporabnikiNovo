@@ -75,6 +75,21 @@ public class ImageMetadataResource {
         return Response.status(Response.Status.OK).entity(imageMetadata).build();
     }
 
+    @GET
+    @Path("/byUser/{userid}")
+    public Response getImageMetadataByUserId(@PathParam("userid") Integer userId) {
+
+        List<ImageMetadata> imageMetadata = imageMetadataBean.getImageMetadataByUserId(userId);
+
+        if (imageMetadata == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        return Response.status(Response.Status.OK).entity(imageMetadata).build();
+    }
+
+
+
     @POST
     public Response createImageMetadata(ImageMetadata imageMetadata) {
 

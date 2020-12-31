@@ -62,6 +62,19 @@ public class ImageMetadataBean {
         return imageMetadata;
     }
 
+
+    public List<ImageMetadata> getImageMetadataByUserId(Integer userId) {
+
+        List<ImageMetadataEntity> resultList = em.createNamedQuery("ImageMetadataEntity.getbyUserId", ImageMetadataEntity.class)
+                .setParameter("userId", userId)
+                .getResultList();
+
+
+        return resultList.stream().map(ImageMetadataConverter::toDto).collect(Collectors.toList());
+
+    }
+
+
     public ImageMetadata createImageMetadata(ImageMetadata imageMetadata) {
 
         ImageMetadataEntity imageMetadataEntity = ImageMetadataConverter.toEntity(imageMetadata);

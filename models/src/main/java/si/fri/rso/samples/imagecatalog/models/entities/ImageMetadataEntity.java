@@ -8,7 +8,12 @@ import java.time.Instant;
 @NamedQueries(value =
         {
                 @NamedQuery(name = "ImageMetadataEntity.getAll",
-                        query = "SELECT im FROM ImageMetadataEntity im")
+                        query = "SELECT im FROM ImageMetadataEntity im"),
+
+                @NamedQuery(
+                        name = "ImageMetadataEntity.getbyUserId",
+                        query = "Select im from ImageMetadataEntity im where im.user_id = :userId"
+                ),
         })
 public class ImageMetadataEntity {
 
@@ -33,6 +38,17 @@ public class ImageMetadataEntity {
 
     @Column(name = "uri")
     private String uri;
+
+    @Column(name = "user_id")
+    private Integer user_id;
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
 
     public Integer getId() {
         return id;
