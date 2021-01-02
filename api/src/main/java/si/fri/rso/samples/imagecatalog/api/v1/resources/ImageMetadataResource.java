@@ -79,15 +79,25 @@ public class ImageMetadataResource {
     @Path("/byUser/{userid}")
     public Response getImageMetadataByUserId(@PathParam("userid") Integer userId) {
 
-        List<ImageMetadata> imageMetadata = imageMetadataBean.getImageMetadataByUserId(userId);
+        List<ImageMetadata> imageMetadataList = imageMetadataBean.getImageMetadataByUserId(userId);
 
-        if (imageMetadata == null) {
+        if (imageMetadataList == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
 
-        return Response.status(Response.Status.OK).entity(imageMetadata).build();
+        return Response.status(Response.Status.OK).entity(imageMetadataList).build();
     }
 
+    @GET
+    @Path("/byUserCount/{userid}")
+    public Response getImageMetadataByUserIdCount(@PathParam("userid") Integer userId) {
+
+        List<ImageMetadata> imageMetadataList = imageMetadataBean.getImageMetadataByUserId(userId);
+
+        Integer obj = imageMetadataList.size();
+
+        return Response.status(Response.Status.OK).entity(obj).build();
+    }
 
 
     @POST

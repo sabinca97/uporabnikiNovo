@@ -69,7 +69,6 @@ public class ImageMetadataBean {
                 .setParameter("userId", userId)
                 .getResultList();
 
-
         return resultList.stream().map(ImageMetadataConverter::toDto).collect(Collectors.toList());
 
     }
