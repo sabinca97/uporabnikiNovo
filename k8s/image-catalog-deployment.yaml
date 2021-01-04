@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: image-catalog-deployment
+  name: uporabniki-deployment
 spec:
   replicas: 1
   selector:
@@ -18,11 +18,11 @@ spec:
         imagePullPolicy: Always
         env:
         - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-          value: jdbc:postgresql://ec2-52-1-95-247.compute-1.amazonaws.com:5432/d8gnrm64ecchtp
+          value: jdbc:postgresql://ec2-54-208-233-243.compute-1.amazonaws.com/d373nd6ijuq04e
         - name: KUMULUZEE_DATASOURCES0_USERNAME
-          value: vdjkikowgtbsmb
+          value: axmsufdwudxpwn
         - name: KUMULUZEE_DATASOURCES0_PASSWORD
-          value: 90c2a354319c666def2d0e862c1d558df0a4919d7d4fd4753e95642899343dbc
+          value: 550d2e28f70ccc901a7500c35a50cce651b356d13af4b6862468a80ea257fe9c
         ports:
         - containerPort: 8080
           name: server
@@ -46,7 +46,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: image-catalog
+  name: uporabniki-service
 spec:
   type: LoadBalancer
   ports:
