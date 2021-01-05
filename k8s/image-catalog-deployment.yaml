@@ -57,6 +57,3 @@ spec:
     app: image-catalog
 
 
-#    kubectl create -f image-catalog-deployment.yaml
-#  kubectl get services
-#  kubectl get deployments
