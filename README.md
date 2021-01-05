@@ -55,4 +55,6 @@ Status Travic CI-ja :https://travis-ci.com/github/sabinca97/mojRepozitorij
 - v classu DemoResource spreminjam broken true/false
 
 
+### INGRESS
+- kubectl apply -f ingress.yaml
 

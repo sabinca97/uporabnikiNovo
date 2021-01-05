@@ -13,7 +13,7 @@ spec:
         app: image-catalog
     spec:
       containers:
-      - image: sabinca97/novaslika:2
+      - image: sabinca97/uporabnik:1
         name: image-catalog
         imagePullPolicy: Always
         env:
@@ -48,7 +48,7 @@ kind: Service
 metadata:
   name: uporabniki-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - port: 8080
     protocol: TCP
