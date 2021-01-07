@@ -101,18 +101,21 @@ public class UporabnikMetadataBean {
 
     public Integer getImagesForUser(Integer userId) {
 
-        log.info("Calling comments service: getting comment count.");
+        int count = 0;
+        int maxTries = 5;
+        while(true) {
+            try {
+                return httpClient
+                        .target(baseUrlImages + "/v1/images/byUserCount/" +String.valueOf(userId) )
+                        .request().get(new GenericType<Integer>() {
+                        });
+            } catch (Exception e) {
+                // handle exception
+                if (++count == maxTries) throw e;
+            }
 
-        try {
-            return httpClient
-                    .target(baseUrlImages + "/v1/images/byUserCount/" +String.valueOf(userId) )
-                    .request().get(new GenericType<Integer>() {
-                    });
         }
-        catch (WebApplicationException | ProcessingException e) {
-            log.severe(e.getMessage());
-            throw new InternalServerErrorException(e);
-        }
+
     }
 
 
