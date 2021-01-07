@@ -38,7 +38,7 @@ public class UporabnikMetadataBean {
     @PostConstruct
     private void init() {
         httpClient = ClientBuilder.newClient();
-        baseUrlImages = "http://localhost:8080"; // only for demonstration
+        baseUrlImages = "http://20.72.163.34/image-service"; // only for demonstration
     }
 
     public List<UporabnikMetadata> getImageMetadata() {
