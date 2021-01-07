@@ -55,46 +55,83 @@ public class UporabnikMetadataBean {
 
     public UporabnikMetadata getUporabnikiMetadata(Integer id) {
 
-        UporabnikMetadataEntity uporabnikMetadataEntity = em.find(UporabnikMetadataEntity.class, id);
+        int count = 0;
+        int maxTries = 5;
+        while(true) {
+            try {
+                UporabnikMetadataEntity uporabnikMetadataEntity = em.find(UporabnikMetadataEntity.class, id);
 
-        if (uporabnikMetadataEntity == null) {
-            throw new NotFoundException();
+                if (uporabnikMetadataEntity == null) {
+                    throw new NotFoundException();
+                }
+
+                UporabnikMetadata uporabnikMetadata = UporabnikiMetadataConverter.toDto(uporabnikMetadataEntity);
+
+                return uporabnikMetadata;
+            } catch (Exception e) {
+                // handle exception
+                if (++count == maxTries) throw e;
+            }
+
         }
 
-        UporabnikMetadata uporabnikMetadata = UporabnikiMetadataConverter.toDto(uporabnikMetadataEntity);
-
-        return uporabnikMetadata;
     }
 
     public List<UporabnikMetadata> getUporabnikMetadataFilter(UriInfo uriInfo) {
 
-        QueryParameters queryParameters = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0)
-                .build();
+        int count = 0;
+        int maxTries = 5;
+        while(true) {
+            try {
+                QueryParameters queryParameters = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0)
+                        .build();
 
-        return JPAUtils.queryEntities(em, UporabnikMetadataEntity.class, queryParameters).stream()
-                .map(UporabnikiMetadataConverter::toDto).collect(Collectors.toList());
+                return JPAUtils.queryEntities(em, UporabnikMetadataEntity.class, queryParameters).stream()
+                        .map(UporabnikiMetadataConverter::toDto).collect(Collectors.toList());
+            } catch (Exception e) {
+                // handle exception
+                if (++count == maxTries) throw e;
+            }
+
+        }
+
+
     }
 
 
 
     public UporabnikMetadata createUporabnikMetadata(UporabnikMetadata uporabnikMetadata) {
 
-        UporabnikMetadataEntity uporabnikMetadataEntity = UporabnikiMetadataConverter.toEntity(uporabnikMetadata);
 
-        try {
-            beginTx();
-            em.persist(uporabnikMetadataEntity);
-            commitTx();
-        }
-        catch (Exception e) {
-            rollbackTx();
+        int count = 0;
+        int maxTries = 5;
+        while(true) {
+            try {
+                UporabnikMetadataEntity uporabnikMetadataEntity = UporabnikiMetadataConverter.toEntity(uporabnikMetadata);
+
+                try {
+                    beginTx();
+                    em.persist(uporabnikMetadataEntity);
+                    commitTx();
+                }
+                catch (Exception e) {
+                    rollbackTx();
+                }
+
+                if (uporabnikMetadataEntity.getId() == null) {
+                    throw new RuntimeException("Entity was not persisted");
+                }
+
+                return UporabnikiMetadataConverter.toDto(uporabnikMetadataEntity);
+            } catch (Exception e) {
+                // handle exception
+                if (++count == maxTries) throw e;
+            }
+
         }
 
-        if (uporabnikMetadataEntity.getId() == null) {
-            throw new RuntimeException("Entity was not persisted");
-        }
 
-        return UporabnikiMetadataConverter.toDto(uporabnikMetadataEntity);
+
     }
 
 
@@ -122,23 +159,36 @@ public class UporabnikMetadataBean {
 
     public boolean deleteUporabnikMetadata(Integer id) {
 
-        UporabnikMetadataEntity uporabnikMetadata = em.find(UporabnikMetadataEntity.class, id);
-
-        if (uporabnikMetadata != null) {
+        int count = 0;
+        int maxTries = 5;
+        while(true) {
             try {
-                beginTx();
-                em.remove(uporabnikMetadata);
-                commitTx();
+                UporabnikMetadataEntity uporabnikMetadata = em.find(UporabnikMetadataEntity.class, id);
+
+                if (uporabnikMetadata != null) {
+                    try {
+                        beginTx();
+                        em.remove(uporabnikMetadata);
+                        commitTx();
+                    }
+                    catch (Exception e) {
+                        rollbackTx();
+                    }
+                }
+                else {
+                    return false;
+                }
+
+                return true;
+            } catch (Exception e) {
+                // handle exception
+                if (++count == maxTries) throw e;
             }
-            catch (Exception e) {
-                rollbackTx();
-            }
-        }
-        else {
-            return false;
+
         }
 
-        return true;
+
+
     }
 
 
